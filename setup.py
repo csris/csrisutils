@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -10,7 +10,9 @@ setup(name='csrisutils',
       description='A collection of various tools that I use',
       long_description=readme(),
       url='https://github.com/csris/csrisutils',
-      packages=['csrisutils'],
+      packages=find_packages(
+          include=['csrisutils*']
+      ),
       zip_safe=False,
       install_requires=[
           'argh'
