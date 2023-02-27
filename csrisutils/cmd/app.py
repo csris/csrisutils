@@ -35,3 +35,8 @@ def main(*commands):
     logger.debug(f'Command: {sys.argv}')
 
     p.dispatch()
+
+
+def panic(msg, *args, **kwargs):
+    logger.critical(msg, *args, **kwargs)
+    sys.exit(1)
