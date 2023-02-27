@@ -20,5 +20,6 @@ setup(name='csrisutils',
       entry_points={
           'console_scripts': [
               'csv = csrisutils.cmd.csv:main',
+              'notion_to_obsidian = csrisutils.cmd.notion_to_obsidian:main',
           ]
       })
