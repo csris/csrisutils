@@ -3,6 +3,7 @@ import logging
 import sys
 
 from csrisutils.cmd import app
+import csrisutils.fileutils as fu
 
 
 logger = logging.getLogger(__name__)
@@ -52,13 +53,9 @@ def _format_markdown_row(row):
 
 
 def _read_csv(file):
-    with _open(file) as in_file:
+    with fu.open(file) as in_file:
         reader = csv.reader(in_file)
         return [tuple(row) for row in reader]
-
-
-def _open(file):
-    return sys.stdin if file == '-' else open(file, newline='')
 
 
 def main():
