@@ -1,4 +1,5 @@
 import csv
+import json
 import logging
 import sys
 
@@ -48,6 +49,11 @@ def markdown(file):
         print(_format_markdown_row(row))
 
 
+def jsonl(file):
+    for row in _read_csv_dict(file):
+        print(json.dumps(row))
+
+
 def _format_markdown_row(row):
     return ' | '.join(row).join(['| ', ' |'])
 
@@ -58,10 +64,17 @@ def _read_csv(file):
         return [tuple(row) for row in reader]
 
 
+def _read_csv_dict(file):
+    with fu.open(file) as in_file:
+        reader = csv.DictReader(in_file)
+        return [d for d in reader]
+
+
 def main():
     app.main(
         markdown,
         union,
         intersection,
-        difference
+        difference,
+        jsonl
     )
